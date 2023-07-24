@@ -1,4 +1,3 @@
-theme: jekyll-theme-merlot
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
@@ -47,4 +46,4 @@ public class Main extends JFrame{
     Main object=new Main();
   }
 }
-//more explaination will be made tomorrow
+//more explaination will be made today evening
