@@ -66,6 +66,20 @@ try{
     Here in our program we have used lambda expression to specify the button action
     
 
+javax.swing.UIManager
+         static UIManager.LookAndFeelInfo[] getInstalledLookAndFeels()
+                 gets an array of objects that describe the installed look-and-feel-implementations
+         static setLookAndFeel(String className)
+                 sets the current look-and-feel, using the given class name(such as"javax.swing.plaf.metal.MetalLookAndFeel")
+
+
+java.swing.UIManager.LookAndFeelInfo
+        String getName()
+            returns the display name for the look-and-feel 
+        String getClassName()
+            retuns the name of the implementation class for look-and-feel
+            
+          
 
 
 
