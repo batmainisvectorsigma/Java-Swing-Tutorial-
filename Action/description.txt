@@ -1,1 +1,137 @@
-rrrr
+blueAction is an action listener whose actionPerformed method
+changes the background color to blue.
+
+You can attach the same object as a listener
+to several event sources:
+• A toolbar button labeled “Blue”
+• A menu item labeled “Blue”
+• A keystroke Ctrl+B
+
+
+The color change command will now be handled in a uniform way, no matter
+whether it was caused by a button click, a menu selection, or a key press.
+
+The Action interface has the following methods:
+void actionPerformed(ActionEvent event)
+void setEnabled(boolean b)
+boolean isEnabled()
+void putValue(String key, Object value)
+Object getValue(String key)
+void addPropertyChangeListener(PropertyChangeListener listener)
+void removePropertyChangeListener(PropertyChangeListener listener
+
+Action interface extends the ActionListener interface
+
+The putValue and getValue methods let you store and retrieve arbitrary name/value
+pairs in the action object. A couple of important predefined strings, namely
+Action.NAME and Action.SMALL_ICON, store action names and icons into an action object:
+action.putValue(Action.NAME, "Blue");
+action.putValue(Action.SMALL_ICON, new ImageIcon("blue-ball.gif"));
+
+
+Table 11.1 Predefined Action Table Names
+Name Value
+NAME The name of the action; displayed on buttons and menu items.
+A place to store a small icon for display in a button, menu item,
+or toolbar.
+SMALL_ICON
+SHORT_DESCRIPTION A short description of the icon for display in a tooltip.
+A long description of the icon for potential use in online help. No
+Swing component uses this value.
+LONG_DESCRIPTION
+A mnemonic abbreviation for display in menu items (see
+Chapter 12).
+MNEMONIC_KEY
+A place to store an accelerator keystroke. No Swing component
+uses this value.
+ACCELERATOR_KEY
+ACTION_COMMAND_KEY Historically, used in the now-obsolete registerKeyboardAction method.
+Potentially useful catch-all property. No Swing component uses
+this value
+
+
+Here is the
+code for the ColorAction class. The constructor sets the name/value pairs, and
+the actionPerformed method carries out the color change action.
+
+Our test program creates three objects of this class, such as
+Action blueAction = new ColorAction("Blue", new ImageIcon("blue-ball.gif"), Color.BLUE);
+Next, let’s associate this action with a button. That is easy because we can use a
+JButton constructor that takes an Action object.
+JButton blueButton = new JButton(blueAction);
+
+That constructor reads the name and icon from the action, sets the short description
+as the tooltip, and sets the action as the listener
+
+add the action objects to keystrokes so that an action is carried
+out when the user types a keyboard command
+To associate actions with
+keystrokes, you first need to generate objects of the KeyStroke class
+KeyStroke ctrlBKey = KeyStroke.getKeyStroke("ctrl B");
+
+ Every JComponent has three input maps, each mapping KeyStroke objects to
+associated actions. The three input maps correspond to three different conditions
+
+Flag Invoke Action
+WHEN_FOCUSED     When this component has keyboard focus
+
+WHEN_ANCESTOR_OF_FOCUSED_COMPONENT   When this component is contained in the same
+window as the component that has keyboard focus
+
+
+WHEN_IN_FOCUSED_WINDOW     When this component is contained in the same
+window as the component that has keyboard focus
+
+
+
+Keystroke processing checks these maps in the following order:
+1. Check the WHEN_FOCUSED map of the component with input focus. If the keystroke
+exists, execute the corresponding action. If the action is enabled, stop
+processing.
+2. Starting from the component with input focus, check the
+WHEN_ANCESTOR_OF_FOCUSED_COMPONENT maps of its parent components. As soon as a map
+with the keystroke is found, execute the corresponding action. If the action
+is enabled, stop processing.
+
+3. Look at all visible and enabled components, in the window with input focus,
+that have this keystroke registered in a WHEN_IN_FOCUSED_WINDOW map. Give these
+components (in the order of their keystroke registration) a chance to execute
+the corresponding action. As soon as the first enabled action is executed, stop
+processing. This part of the process is somewhat fragile if a keystroke appears
+in more than one WHEN_IN_FOCUSED_WINDOW map.
+
+
+To obtain an input map from the component, use the getInputMap method. Here is
+an example:
+InputMap imap = panel.getInputMap(JComponent.WHEN_FOCUSED);
+
+
+he InputMap doesn’t directly map KeyStroke objects to Action objects. Instead, it maps
+to arbitrary objects, and a second map, implemented by the ActionMap class,
+maps objects to actions. That makes it easier to share the same actions among
+keystrokes that come from different input maps.
+Thus, each component has three input maps and one action map. To tie them together, you need to come up with names for the actions. Here is how you can tie
+a key to an action:
+imap.put(KeyStroke.getKeyStroke("ctrl Y"), "panel.yellow");
+ActionMap amap = panel.getActionMap();
+amap.put("panel.yellow", yellowAction);
+It is customary to use the string "none" for a do-nothing action. That makes it easy
+to deactivate a key:
+imap.put(KeyStroke.getKeyStroke("ctrl C"), "none");
+
+
+1. Implement a class that extends the AbstractAction class. You may be able to use
+the same class for multiple related actions.
+2. Construct an object of the action class.
+3. Construct a button or menu item from the action object. The constructor will
+read the label text and icon from the action object.
+4. For actions that can be triggered by keystrokes, you have to carry out additional steps. First, locate the top-level component of the window, such as a
+panel that contains all other components.
+5. Then, get the WHEN_ANCESTOR_OF_FOCUSED_COMPONENT input map of the top-level component. Make a KeyStroke object for the desired keystroke. Make an action key
+object, such as a string that describes your action. Add the pair (keystroke,
+action key) into the input map.
+6. Finally, get the action map of the top
+
+
+
+
