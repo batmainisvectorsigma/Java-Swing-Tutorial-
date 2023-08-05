@@ -1,2 +1,2 @@
-About our Program
+About our Program,
     Simple graphics editor application that allows the user to place, move and erase squares on a canvas
