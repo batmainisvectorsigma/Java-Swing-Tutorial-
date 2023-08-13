@@ -30,3 +30,30 @@ public class Main {
         frame.setVisible(true);
     }
 }
+
+
+
+
+/* 
+Property Name                   Value
+    
+actionCommand                  The action command string associated with this button
+    
+mnemonic                       The keyboard mnemonic for this button
+                                        
+    
+armed                            true     if the button was pressed and the mouse is still over the
+                                        button
+    
+enabled                            true if the button is selectable
+                                           
+pressed                              true if the button was pressed but the mouse button hasn’t yet
+                                            been released
+    
+rollover                             true if the mouse is over the button
+    
+selected                             true if the button has been toggled on (used for checkboxes and
+                                    radio buttons)selected
+
+
+    */
