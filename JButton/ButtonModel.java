@@ -57,3 +57,10 @@ selected                             true if the button has been toggled on (use
 
 
     */
+
+
+/*
+The ButtonModel is an interface that represents the state of a button (like whether it's pressed, armed, selected, etc.). You can retrieve the ButtonModel of a JButton using its getModel() method.
+
+However, in your provided code, you have fetched the model but did not do anything specific with it. I'll expand on your code by retrieving the ButtonModel and then printing out some information about the button's state:
+*/
