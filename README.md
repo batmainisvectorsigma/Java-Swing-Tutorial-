@@ -6,7 +6,7 @@ Here I am uploading programs from a book that I have read. The motive of this re
 # from where to start reading this repo
 - you can start reading from NotHelloWorld.java file. This NotHelloWorld.java file is not in a any folder. So, you can start from a file that is not inside of any folder just like NotHelloWorld.java file.
 
-- After reading all the file that is not in a certain folder. You can start reading file is inside a folder. That is you can start from Action, Border, ComboBoxes, DialogBoxes, Event, JButton, Layout Manangement, Menu, Mouse, Sliders, TextFiel, Troubleshoot GUI Programs etc. 
+- After reading all the file that is not in a certain folder. You can start reading programs which is inside a folder. That is, you can start reading programs in this sequence Action, Border, ComboBoxes, DialogBoxes, Event, JButton, Layout Manangement, Menu, Mouse, Sliders, TextFiel, Troubleshoot GUI Programs etc. 
 
 # Conclusion
 After reading this repo you can start creating applications. Just reading this repo and not making anything after reading is similar to a person who doesn't read anything. 
