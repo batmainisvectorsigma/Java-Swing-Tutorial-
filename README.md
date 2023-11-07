@@ -9,4 +9,4 @@ Here I am uploading programs from a book that I have read. The motive of this re
 - After reading all the file that is not in a certain folder. You can start reading programs which is inside a folder. That is, you can start reading programs in this sequence Action, Border, ComboBoxes, DialogBoxes, Event, JButton, Layout Manangement, Menu, Mouse, Sliders, TextField, Troubleshoot GUI Programs etc. 
 
 # Conclusion
-After reading this repo you can start creating applications. Just reading this repo and not making anything after reading is similar to a person who doesn't read anything. 
+After reading this repo you can start creating applications. Just reading this repo and not making anything is similar to a person who doesn't read anything. 
