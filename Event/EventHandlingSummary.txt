@@ -6,7 +6,7 @@ ActionListener        actionPerformed       ActionEvent          AbstractButton
                                             • getModifiers        JTextField
                                                                   Timer
 
-AdjustmentListener    adjustmentValueChanged AdjustmentEveent       JScrollbar
+AdjustmentListener    adjustmentValueChanged AdjustmentEvent       JScrollbar
                                                  • getAdjustable
                                                  • getAdjustementType
                                                  • getValue
